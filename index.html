@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Medisa Karimi - Full Stack Developer based in Tehran. React and Next.js on the front, Laravel, Django and Go behind them.">
+<meta name="color-scheme" content="light dark">
+<title>Medisa Karimi &#8212; Full Stack Developer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect x=%224%22 y=%224%22 width=%2216%22 height=%2216%22 rx=%222%22 fill=%22none%22 stroke=%22%234F3FE0%22 stroke-width=%223%22/><circle cx=%2223%22 cy=%2223%22 r=%225%22 fill=%22%23D2542A%22/></svg>">
+<style>
+/* ============================================================
+   MEDISA KARIMI — FULL STACK DEVELOPER
+   Palette: paper + ink, indigo tooling accent, persimmon signal.
+   Motif: the design canvas — dotted grid, selection frames.
+   ============================================================ */
+:root{
+  --bg:#F3F1EC;
+  --bg-deep:#E9E6DF;
+  --surface:#FBFAF7;
+  --surface-2:#F1EFE9;
+  --text:#16151A;
+  --muted:#514E5C;
+  --faint:#6C6879;
+  --line:#DCD8CF;
+  --line-strong:#C4BFB4;
+  --accent:#4F3FE0;
+  --accent-hi:#3A2CB8;
+  --accent-wash:rgba(79,63,224,.09);
+  --signal:#D2542A;
+  --signal-wash:rgba(210,84,42,.10);
+  --grid-dot:rgba(22,21,26,.14);
+  --shadow:0 1px 2px rgba(22,21,26,.05),0 10px 32px -14px rgba(22,21,26,.22);
+  --shadow-lg:0 2px 4px rgba(22,21,26,.06),0 30px 70px -30px rgba(22,21,26,.34);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C0B11;
+    --bg-deep:#08070C;
+    --surface:#141320;
+    --surface-2:#1B1A2A;
+    --text:#EDEBF2;
+    --muted:#A09CB4;
+    --faint:#847FA0;
+    --line:#242336;
+    --line-strong:#343149;
+    --accent:#8B7BFF;
+    --accent-hi:#A899FF;
+    --accent-wash:rgba(139,123,255,.13);
+    --signal:#FF8256;
+    --signal-wash:rgba(255,130,86,.12);
+    --grid-dot:rgba(237,235,242,.13);
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 18px 44px -22px rgba(0,0,0,.9);
+    --shadow-lg:0 2px 6px rgba(0,0,0,.55),0 40px 90px -40px rgba(0,0,0,1);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C0B11; --bg-deep:#08070C; --surface:#141320; --surface-2:#1B1A2A;
+  --text:#EDEBF2; --muted:#A09CB4; --faint:#847FA0;
+  --line:#242336; --line-strong:#343149;
+  --accent:#8B7BFF; --accent-hi:#A899FF; --accent-wash:rgba(139,123,255,.13);
+  --signal:#FF8256; --signal-wash:rgba(255,130,86,.12);
+  --grid-dot:rgba(237,235,242,.13);
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 18px 44px -22px rgba(0,0,0,.9);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.55),0 40px 90px -40px rgba(0,0,0,1);
+}
+
+:root{
+  --mono:"Cascadia Code","JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Consolas,"Liberation Mono",Menlo,monospace;
+  --sans:"Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --pad:clamp(1.25rem,5vw,3rem);
+  --maxw:78rem;
+  --ease:cubic-bezier(.22,.8,.28,1);
+}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);
+  font-size:clamp(.95rem,.9rem + .18vw,1.03rem);
+  line-height:1.62;overflow-x:hidden;
+  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+::selection{background:var(--accent);color:var(--bg)}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+h1,h2,h3,h4{line-height:1.1;letter-spacing:-.025em;margin:0}
+
+.eyebrow{
+  font-family:var(--mono);font-size:.67rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:.7rem;margin:0;font-weight:500;
+}
+.eyebrow::before{content:"";width:1.6rem;height:1px;background:currentColor;flex:none}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(16px) saturate(1.4);
+  -webkit-backdrop-filter:blur(16px) saturate(1.4);
+  border-bottom:1px solid var(--line);
+}
+.nav__in{display:flex;align-items:center;gap:1.5rem;height:3.5rem}
+.mark{
+  display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto;
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;font-weight:600;white-space:nowrap;
+}
+.mark__glyph{width:1.2rem;height:1.2rem;flex:none;color:var(--accent)}
+.mark__glyph svg{width:100%;height:100%;display:block}
+.mark span{color:var(--faint);font-weight:400}
+.navlinks{display:flex;gap:1.35rem;list-style:none;margin:0;padding:0}
+.navlinks a{
+  text-decoration:none;font-family:var(--mono);font-size:.69rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);padding-block:.35rem;position:relative;
+  transition:color .22s var(--ease);
+}
+.navlinks a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);
+}
+.navlinks a:hover{color:var(--text)}
+.navlinks a:hover::after{transform:scaleX(1)}
+.themebtn{
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--muted);
+  width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;cursor:pointer;flex:none;
+  transition:color .2s var(--ease),border-color .2s var(--ease);
+}
+.themebtn:hover{color:var(--text);border-color:var(--accent)}
+.themebtn svg{width:.95rem;height:.95rem}
+@media (max-width:880px){.navlinks{display:none}}
+
+/* ---------- hero / canvas motif ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero__grid{
+  position:absolute;inset:0;z-index:-2;
+  background-image:radial-gradient(var(--grid-dot) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:radial-gradient(115% 85% at 50% 30%,#000 20%,transparent 78%);
+  -webkit-mask-image:radial-gradient(115% 85% at 50% 30%,#000 20%,transparent 78%);
+}
+.hero__frames{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.frm{
+  position:absolute;border:1.5px solid var(--accent);border-radius:3px;opacity:0;
+  animation:frmIn .9s var(--ease) forwards;
+}
+.frm::before,.frm::after,.frm i::before,.frm i::after{
+  content:"";position:absolute;width:6px;height:6px;background:var(--bg);
+  border:1.5px solid var(--accent);border-radius:1px;
+}
+.frm::before{top:-4px;left:-4px}
+.frm::after{top:-4px;right:-4px}
+.frm i::before{bottom:-4px;left:-4px}
+.frm i::after{bottom:-4px;right:-4px}
+.frm b{
+  position:absolute;top:-1.35rem;left:-1.5px;font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.06em;background:var(--accent);color:#fff;padding:.05rem .4rem;
+  border-radius:2px;font-weight:500;white-space:nowrap;
+}
+.frm--a{top:12%;left:3%;width:15rem;height:9rem;animation-delay:.4s}
+.frm--b{bottom:15%;right:5%;width:11rem;height:12rem;animation-delay:.75s;border-color:var(--signal)}
+.frm--b::before,.frm--b::after,.frm--b i::before,.frm--b i::after{border-color:var(--signal)}
+.frm--b b{background:var(--signal)}
+.frm--c{top:60%;left:12%;width:7rem;height:4.5rem;animation-delay:1.05s}
+@keyframes frmIn{from{opacity:0;transform:scale(.965)}to{opacity:.75;transform:none}}
+@media (max-width:1180px){.frm{display:none}}
+@media (prefers-reduced-motion:reduce){.frm{animation:none;opacity:.7}}
+
+.hero__in{padding-block:clamp(4.5rem,13vw,8rem) clamp(3rem,7vw,5rem);display:grid;gap:clamp(1.5rem,3.2vw,2.4rem)}
+h1{font-size:clamp(3rem,12vw,8.5rem);font-weight:700;letter-spacing:-.045em;margin:0}
+h1 .ln{display:block;overflow:hidden}
+h1 .ln>span{display:block;animation:rise 1s var(--ease) both}
+h1 .ln:nth-child(2)>span{animation-delay:.09s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero__role{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.6rem .9rem;margin:0;
+  font-family:var(--mono);font-size:clamp(.76rem,.72rem + .3vw,.92rem);
+  letter-spacing:.03em;color:var(--muted);
+}
+.hero__role strong{color:var(--text);font-weight:600}
+.hero__role em{font-style:normal;color:var(--faint)}
+.dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--signal);flex:none;box-shadow:0 0 0 4px var(--signal-wash)}
+.lede{max-width:47rem;font-size:clamp(1.02rem,.98rem + .35vw,1.28rem);color:var(--muted);margin:0;line-height:1.6}
+.lede strong{color:var(--text);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+  padding:.72rem 1.15rem;border:1px solid var(--line-strong);border-radius:2.5rem;
+  color:var(--text);background:var(--surface);font-weight:500;
+  transition:border-color .2s var(--ease),transform .2s var(--ease),background .2s var(--ease);
+}
+.btn svg{width:.95rem;height:.95rem;flex:none}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn--solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn--solid:hover{background:var(--accent-hi);border-color:var(--accent-hi)}
+
+/* ---------- ledger ---------- */
+.ledger{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);background:var(--surface)}
+.ledger__i{padding:clamp(1.4rem,3.5vw,2.3rem) var(--pad);border-right:1px solid var(--line)}
+.ledger__i:last-child{border-right:0}
+.ledger__n{display:block;font-size:clamp(1.9rem,5vw,3rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+.ledger__l{
+  display:block;margin-top:.55rem;font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--faint);
+}
+@media (max-width:760px){
+  .ledger{grid-template-columns:repeat(2,1fr)}
+  .ledger__i:nth-child(2n){border-right:0}
+  .ledger__i:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(3.5rem,9vw,6.5rem)}
+.sec__head{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:clamp(2rem,4.5vw,3.2rem)}
+.sec__head h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:700;white-space:nowrap}
+.sec__rule{flex:1;height:1px;background:var(--line);min-width:1.5rem}
+.sec__tag{font-family:var(--mono);font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+@media (max-width:640px){
+  .sec__head{flex-wrap:wrap;gap:.5rem .9rem}
+  .sec__head h2{white-space:normal}
+  .sec__rule{display:none}
+  .sec__tag{flex-basis:100%}
+}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:1.55fr .95fr;gap:clamp(1.8rem,4vw,3.5rem);align-items:start}
+.about p{margin:0 0 1.1rem;color:var(--muted)}
+.about .big{font-size:clamp(1.05rem,1rem + .35vw,1.3rem);color:var(--text);line-height:1.55}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:.9rem;
+  padding:clamp(1.3rem,3vw,1.9rem);box-shadow:var(--shadow);
+}
+.card h3{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--faint);font-weight:500;margin:0 0 1.1rem;
+}
+.deets{list-style:none;margin:0;padding:0;display:grid;gap:.7rem;font-size:.88rem}
+.deets li{display:grid;grid-template-columns:4.6rem 1fr;gap:.8rem;align-items:baseline}
+.deets span{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+.deets a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-wash);word-break:break-word}
+.deets a:hover{border-bottom-color:var(--accent)}
+@media (max-width:840px){.about{grid-template-columns:1fr}}
+
+/* ---------- selected work ---------- */
+.shots{display:grid;gap:clamp(2.8rem,7vw,5rem)}
+.shot{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3.2rem);align-items:center}
+.shot:nth-child(even) .shot__vis{order:2}
+.shot__vis{display:grid;gap:.55rem;min-width:0}
+/* real screenshots: tall pages crop to their top, the part worth seeing */
+.shot__media img{aspect-ratio:16/10;object-fit:cover;object-position:top center}
+/* the CSS mock is a fallback only - a loaded screenshot supersedes it.
+   If the image 404s its onerror removes it, this selector stops matching,
+   and the mock takes over. */
+.shot__media img + .mock,
+.shot__media img + .clp{display:none}
+/* fixed 4-up so a single thumb keeps the rhythm instead of stretching */
+.shotgal{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem}
+@media (max-width:480px){.shotgal{grid-template-columns:repeat(2,1fr)}}
+.shotgal a{
+  display:block;border:1px solid var(--line);border-radius:.5rem;overflow:hidden;
+  aspect-ratio:16/10;background:var(--surface-2);position:relative;
+  transition:border-color .22s var(--ease),transform .22s var(--ease);
+}
+.shotgal a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.shotgal img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.shotgal a::after{
+  content:attr(data-label);position:absolute;inset:auto 0 0 0;padding:1.1rem .5rem .35rem;
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.8));opacity:0;transition:opacity .22s var(--ease);
+}
+.shotgal a:hover::after{opacity:1}
+.shot__full{
+  display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;margin-top:.15rem;
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+}
+.shot__full:hover{color:var(--accent)}
+.shot__full svg{width:.8rem;height:.8rem}
+.shot__media{
+  border:1px solid var(--line);border-radius:.9rem;overflow:hidden;background:var(--surface-2);
+  box-shadow:var(--shadow-lg);position:relative;transition:transform .45s var(--ease);
+}
+.shot__media:hover{transform:translateY(-5px)}
+.shot__media img{width:100%;height:auto;display:block}
+.shot__no{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;color:var(--faint);display:block;margin-bottom:.75rem}
+.shot__body h3{font-size:clamp(1.35rem,2.6vw,1.9rem);font-weight:700;margin:0 0 .35rem}
+.shot__co{
+  display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.08em;color:var(--accent);margin-bottom:.9rem;
+}
+.shot__co i{width:.35rem;height:.35rem;border-radius:50%;background:currentColor;flex:none}
+.shot__co a{text-decoration:none;border-bottom:1px solid var(--accent-wash)}
+.shot__co a:hover{border-bottom-color:currentColor}
+.job__co a{text-decoration:none;border-bottom:1px solid var(--accent-wash)}
+.job__co a:hover{border-bottom-color:currentColor}
+.shot__body p{color:var(--muted);margin:0 0 1.1rem;max-width:34rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+.tags li{
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.07em;padding:.3rem .6rem;
+  border:1px solid var(--line);border-radius:2rem;color:var(--muted);background:var(--surface);
+}
+.tags--key li{border-color:var(--accent);color:var(--accent);background:var(--accent-wash)}
+@media (max-width:900px){
+  .shot{grid-template-columns:1fr}
+  .shot:nth-child(even) .shot__media{order:0}
+}
+
+/* ---------- CSS mockups (placeholders until real screenshots land) ---------- */
+.mock{
+  --m-bg:#FFFFFF;--m-panel:#F5F6F8;--m-ink:#14232E;--m-line:#E3E6EB;
+  --m-key:#0E9F6E;--m-warn:#E0A64A;
+  aspect-ratio:16/10;background:var(--m-bg);display:flex;font-size:0;
+}
+.mock--indigo{--m-ink:#1E1B4B;--m-key:#6D5AE6;--m-panel:#F6F5FB}
+.mock--blue{--m-ink:#123A73;--m-key:#2E90FA;--m-panel:#F2F6FC}
+.mock--gold{--m-ink:#101014;--m-key:#C9971F;--m-panel:#F4F2EC}
+.mock__side{width:21%;background:var(--m-ink);padding:6% 4%;display:grid;gap:8%;align-content:start}
+.mock__side i{display:block;height:.42rem;background:rgba(255,255,255,.16);border-radius:2px}
+.mock__side i:first-child{background:var(--m-key);height:.65rem;width:72%}
+.mock__side i:nth-child(3){background:rgba(255,255,255,.45)}
+.mock__main{flex:1;padding:4.5%;display:grid;gap:5%;align-content:start;background:var(--m-panel)}
+.mock__bar{display:flex;gap:3%;align-items:center}
+.mock__bar u{flex:1;height:.55rem;background:var(--m-line);border-radius:3px;display:block}
+.mock__bar s{width:2.6rem;height:.75rem;background:var(--m-key);border-radius:3px;display:block}
+.mock__tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:3%}
+.mock__tiles b{display:block;height:2.4rem;background:var(--m-bg);border:1px solid var(--m-line);border-radius:5px;position:relative}
+.mock__tiles b::after{content:"";position:absolute;left:14%;top:24%;width:46%;height:.5rem;background:var(--m-ink);opacity:.85;border-radius:2px}
+.mock__tiles b::before{content:"";position:absolute;left:14%;bottom:24%;width:66%;height:.28rem;background:var(--m-line);border-radius:2px}
+.mock__cols{display:grid;grid-template-columns:1.35fr 1fr;gap:3%}
+.mock__chart{background:var(--m-bg);border:1px solid var(--m-line);border-radius:5px;padding:5%;display:flex;align-items:flex-end;gap:5%;height:5.4rem}
+.mock__chart em{flex:1;background:var(--m-key);border-radius:2px 2px 0 0;display:block}
+.mock__chart em:nth-child(1){height:42%}
+.mock__chart em:nth-child(2){height:66%}
+.mock__chart em:nth-child(3){height:38%}
+.mock__chart em:nth-child(4){height:84%}
+.mock__chart em:nth-child(5){height:58%}
+.mock__chart em:nth-child(6){height:72%}
+.mock__chart em:nth-child(7){height:48%}
+.mock__rows{background:var(--m-bg);border:1px solid var(--m-line);border-radius:5px;padding:5%;display:grid;gap:.45rem;align-content:start}
+.mock__rows q{display:block;height:.4rem;background:var(--m-line);border-radius:2px}
+.mock__rows q::before,.mock__rows q::after{content:none}
+.mock__rows q:nth-child(1){width:80%;background:var(--m-ink);opacity:.7}
+.mock__rows q:nth-child(2){width:60%}
+.mock__rows q:nth-child(3){width:88%}
+.mock__rows q:nth-child(4){width:52%;background:var(--m-key);opacity:.6}
+.mock__rows q:nth-child(5){width:72%}
+.mock--rtl{flex-direction:row-reverse}
+
+.mock--land{flex-direction:column;padding:0}
+.mock__hero{background:var(--m-ink);padding:9% 8% 11%;display:grid;gap:.5rem;justify-items:center}
+.mock__hero u{display:block;height:.8rem;width:58%;background:rgba(255,255,255,.9);border-radius:3px}
+.mock__hero s{display:block;height:.8rem;width:38%;background:var(--m-key);border-radius:3px}
+.mock__hero b{display:block;height:.34rem;width:70%;background:rgba(255,255,255,.26);border-radius:2px;margin-top:.25rem}
+.mock__hero em{display:block;height:1.25rem;width:5.5rem;background:var(--m-key);border-radius:2rem;margin-top:.45rem}
+.mock__cards{flex:1;background:var(--m-bg);padding:6% 8%;display:grid;grid-template-columns:repeat(3,1fr);gap:5%;align-content:center}
+.mock__cards b{display:block;height:3.2rem;border:1px solid var(--m-line);border-radius:6px;background:var(--m-panel)}
+.mock__cards b:nth-child(2){background:var(--m-key);border-color:var(--m-key);transform:scale(1.14)}
+
+.mock--auth .mock__left{width:50%;background:var(--m-ink);padding:8%;display:grid;gap:.55rem;align-content:center}
+.mock--auth .mock__left u{display:block;height:.85rem;width:76%;background:rgba(255,255,255,.92);border-radius:3px}
+.mock--auth .mock__left s{display:block;height:.85rem;width:46%;background:var(--m-key);border-radius:3px}
+.mock--auth .mock__left b{display:block;height:.34rem;width:64%;background:rgba(255,255,255,.25);border-radius:2px;margin-top:.35rem}
+.mock--auth .mock__right{flex:1;background:var(--m-bg);padding:9%;display:grid;gap:.7rem;align-content:center}
+.mock--auth .mock__right u{display:block;height:.8rem;width:52%;background:var(--m-ink);border-radius:3px;opacity:.9}
+.mock--auth .mock__right i{display:block;height:1.4rem;border:1px solid var(--m-line);border-radius:5px;background:var(--m-panel)}
+.mock--auth .mock__right s{display:block;height:1.4rem;background:var(--m-key);border-radius:5px}
+
+.mock--gauge{background:var(--m-ink);padding:5%;gap:4%;align-items:center}
+.mock__g{
+  flex:1;aspect-ratio:1;border-radius:50%;max-width:8rem;margin-inline:auto;
+  background:conic-gradient(var(--m-key) 0 62%,rgba(255,255,255,.10) 62% 100%);
+  -webkit-mask:radial-gradient(circle,transparent 57%,#000 58%);
+  mask:radial-gradient(circle,transparent 57%,#000 58%);
+}
+.mock__g--big{max-width:12rem;background:conic-gradient(var(--m-warn) 0 44%,rgba(255,255,255,.10) 44% 100%)}
+.mock__g--hot{background:conic-gradient(#E5484D 0 74%,rgba(255,255,255,.10) 74% 100%)}
+.mock__stack{flex:1;display:grid;gap:.55rem;align-content:center;max-width:10rem}
+.mock__stack q{display:block;height:1.8rem;background:rgba(255,255,255,.07);border-radius:5px}
+.mock__stack q::before,.mock__stack q::after{content:none}
+
+/* ---------- experience ---------- */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:var(--line)}
+.job{position:relative;padding-left:clamp(1.3rem,3vw,2.2rem);padding-bottom:clamp(2rem,4vw,2.8rem)}
+.job:last-child{padding-bottom:0}
+.job::before{
+  content:"";position:absolute;left:-3.5px;top:.62rem;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1.5px solid var(--line-strong);
+}
+.job--now::before{background:var(--signal);border-color:var(--signal);box-shadow:0 0 0 4px var(--signal-wash)}
+.job__when{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);display:flex;gap:.7rem;align-items:center;margin-bottom:.5rem;
+}
+.job__when b{color:var(--muted);font-weight:500}
+.job__when i{font-style:normal;opacity:.65}
+.job h3{font-size:clamp(1.05rem,2vw,1.3rem);font-weight:650;margin:0 0 .25rem}
+.job__co{margin:0 0 .7rem;font-size:.92rem;color:var(--accent);font-weight:600}
+.job__co em{font-style:normal;color:var(--faint);font-weight:400}
+.live{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--signal);border:1px solid var(--signal);border-radius:2rem;padding:.08rem .45rem;
+  margin-left:.4rem;vertical-align:.08em;
+}
+.job__meta{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .8rem;padding:0}
+.job__meta li{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);border:1px solid var(--line);border-radius:2rem;padding:.15rem .55rem;
+}
+.job__meta .mode{color:var(--muted)}
+.job__meta .intl{color:var(--accent);border-color:var(--accent)}
+.bul{margin:0 0 .9rem;padding-left:1.05rem;color:var(--muted);font-size:.93rem}
+.bul li{margin-bottom:.3rem}
+.bul li::marker{color:var(--accent)}
+
+/* ---------- product grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr));gap:1rem}
+.proj{
+  background:var(--surface);border:1px solid var(--line);border-radius:.8rem;
+  padding:1.15rem 1.25rem 1.3rem;transition:border-color .25s var(--ease),transform .25s var(--ease);
+}
+.proj:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj__top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.15rem}
+.proj h3{font-size:1rem;font-weight:650}
+.proj__chk{width:.95rem;height:.95rem;color:var(--accent);flex:none}
+.proj__co{font-family:var(--mono);font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.6rem}
+.proj p{margin:0;font-size:.87rem;color:var(--muted);line-height:1.55}
+
+/* ---------- Cloud Linen Pro dashboard recreation ----------
+   Scales with the card via container query units, so every
+   dimension stays proportional at any column width.          */
+.shot__media{container-type:inline-size}
+.clp{
+  --c-ink:#0F1621;--c-ink2:#161F2C;--c-teal:#12A594;--c-teal-d:#123A34;
+  --c-bg:#FAFAF9;--c-card:#FFFFFF;--c-line:#EAEAE6;
+  --c-text:#1A1A1A;--c-mute:#71717A;
+  --c-gold:#D9A441;--c-red:#DC2626;--c-green:#16A34A;
+  font-size:1.32cqw;line-height:1.35;color:var(--c-text);
+  font-family:var(--sans);background:var(--c-bg);
+  aspect-ratio:16/10;display:flex;flex-direction:column;overflow:hidden;
+}
+.clp__chrome{
+  display:flex;align-items:center;gap:.55em;padding:.95em 1.3em;
+  background:#F7F7F5;border-bottom:1px solid var(--c-line);flex:none;
+}
+.clp__chrome i{width:.72em;height:.72em;border-radius:50%;flex:none}
+.clp__chrome i:nth-child(1){background:#F0685E}
+.clp__chrome i:nth-child(2){background:#F4BF52}
+.clp__chrome i:nth-child(3){background:#5FC466}
+.clp__chrome span{
+  font-family:var(--mono);font-size:.92em;color:#4B5563;margin-left:1.1em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.clp__body{flex:1;display:flex;min-height:0}
+.clp__side{
+  width:22%;background:var(--c-ink);padding:1.6em 1.15em;
+  display:flex;flex-direction:column;gap:1.5em;flex:none;
+}
+.clp__logo{font-family:var(--mono);font-size:1.55em;font-weight:700;color:var(--c-teal);letter-spacing:-.02em}
+.clp__nav{display:grid;gap:.28em}
+.clp__nav a{
+  display:flex;align-items:center;gap:.7em;padding:.62em .75em;border-radius:.5em;
+  font-size:1.02em;color:#9AA4B2;text-decoration:none;
+}
+.clp__nav a i{width:.85em;height:.85em;border-radius:.18em;background:#3A4454;flex:none}
+.clp__nav a.on{background:var(--c-teal-d);color:#D9F2EC;font-weight:600}
+.clp__nav a.on i{background:var(--c-teal);border-radius:50%}
+.clp__prop{margin-top:auto;background:var(--c-ink2);border-radius:.6em;padding:.95em 1em;display:grid;gap:.3em}
+.clp__prop b{font-size:1.02em;color:#E5E7EB;font-weight:600}
+.clp__prop span{font-size:.86em;color:#8A94A3}
+.clp__main{flex:1;padding:1.6em 1.7em;display:flex;flex-direction:column;gap:1.25em;min-width:0}
+.clp__head{display:flex;align-items:flex-start;justify-content:space-between;gap:1em}
+.clp__head h4{font-size:1.75em;font-weight:700;margin:0;letter-spacing:-.02em}
+.clp__head p{margin:.18em 0 0;font-size:1.02em;color:var(--c-mute)}
+.clp__alert{
+  font-size:.94em;font-weight:600;color:var(--c-red);background:#FEF2F2;
+  border:1px solid #FBD5D5;border-radius:2em;padding:.5em 1em;white-space:nowrap;flex:none;
+}
+.clp__stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.85em}
+.clp__stat{
+  background:var(--c-card);border:1px solid var(--c-line);border-radius:.55em;
+  padding:.95em 1em 1.05em;display:grid;gap:.3em;align-content:start;
+}
+.clp__stat span{font-size:.8em;letter-spacing:.09em;text-transform:uppercase;color:#6B7280;font-weight:600}
+.clp__stat b{font-family:Georgia,"Times New Roman",serif;font-size:2.4em;font-weight:700;line-height:1;letter-spacing:-.02em}
+.clp__stat em{font-style:normal;font-size:.86em;color:var(--c-mute)}
+.clp__stat .teal{color:var(--c-teal)}
+.clp__stat .gold{color:var(--c-gold)}
+.clp__stat .red{color:var(--c-red)}
+.clp__stat em.up{color:var(--c-green)}
+.clp__stat em.red{color:var(--c-red)}
+.clp__panels{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:.85em;min-height:0}
+.clp__panel{
+  background:var(--c-card);border:1px solid var(--c-line);border-radius:.55em;
+  padding:1.1em 1.2em;display:flex;flex-direction:column;gap:.85em;min-height:0;
+}
+.clp__ph{display:flex;align-items:center;justify-content:space-between;gap:.7em}
+.clp__ph h5{font-size:1.2em;font-weight:700;margin:0;letter-spacing:-.01em}
+.clp .pill{font-size:.82em;font-weight:600;border-radius:2em;padding:.28em .75em;white-space:nowrap}
+.clp .pill--red{background:#FEF2F2;color:var(--c-red)}
+.clp .pill--green{background:#ECFDF5;color:var(--c-green)}
+.clp__inv{list-style:none;margin:0;padding:0;display:grid;gap:0;flex:1;align-content:space-between}
+.clp__inv li{
+  display:grid;grid-template-columns:1fr 1.15fr auto;align-items:center;gap:.9em;
+  padding:.62em 0;border-bottom:1px solid #F1F1EF;font-size:1.02em;
+}
+.clp__inv li:last-child{border-bottom:0}
+.clp__inv u{display:block;height:.42em;border-radius:2em;background:#EFEFEC;text-decoration:none;overflow:hidden}
+.clp__inv u s{display:block;height:100%;border-radius:2em;text-decoration:none}
+.clp__inv b{font-size:.86em;font-weight:600;border-radius:2em;padding:.28em .7em;text-align:center;white-space:nowrap}
+.clp__inv b.ok{background:#ECFDF5;color:var(--c-green)}
+.clp__inv b.low{background:#FFFBEB;color:#B45309}
+.clp__inv b.crit{background:#FEF2F2;color:var(--c-red)}
+.clp__bars{flex:1;display:flex;align-items:flex-end;gap:.75em;padding-top:.5em}
+.clp__bars div{flex:1;display:flex;flex-direction:column;align-items:center;gap:.55em;height:100%;justify-content:flex-end}
+.clp__bars i{display:block;width:100%;border-radius:.28em .28em 0 0;background:#A7DFD2}
+.clp__bars i.gold{background:#F0CE86}
+.clp__bars i.red{background:#F5A9A9}
+.clp__bars span{font-size:.86em;color:var(--c-mute)}
+
+/* ---------- live site cards ---------- */
+.sites{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1.1rem}
+.site{
+  display:flex;flex-direction:column;text-decoration:none;overflow:hidden;
+  background:var(--surface);border:1px solid var(--line);border-radius:.9rem;
+  transition:border-color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.site:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow)}
+.site__shot{
+  position:relative;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid var(--line);
+  background:linear-gradient(135deg,var(--s-a,#4F3FE0),var(--s-b,#8B7BFF));
+  display:grid;place-items:center;
+}
+.site__shot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.site__mono{
+  font-family:var(--mono);font-size:2.6rem;font-weight:600;color:rgba(255,255,255,.92);
+  letter-spacing:-.04em;line-height:1;user-select:none;
+}
+.site__shot::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 110%,rgba(0,0,0,.28),transparent 60%);
+  pointer-events:none;
+}
+.site__body{padding:1.05rem 1.2rem 1.25rem;display:grid;gap:.45rem;flex:1;align-content:start}
+.site__top{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.site__top h3{font-size:1.02rem;font-weight:650}
+.site__arrow{width:.9rem;height:.9rem;color:var(--faint);flex:none;transition:color .2s var(--ease),transform .2s var(--ease)}
+.site:hover .site__arrow{color:var(--accent);transform:translate(2px,-2px)}
+.site__host{font-family:var(--mono);font-size:.63rem;letter-spacing:.06em;color:var(--accent);word-break:break-all}
+.site__body p{margin:.15rem 0 0;font-size:.86rem;color:var(--muted);line-height:1.55}
+.site__role{
+  margin-top:.5rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);border-top:1px dotted var(--line-strong);padding-top:.6rem;
+}
+
+/* ---------- dribbble grid ---------- */
+.dribs{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.85rem}
+.drib{
+  display:block;text-decoration:none;border:1px solid var(--line);border-radius:.7rem;overflow:hidden;
+  background:var(--surface-2);position:relative;aspect-ratio:4/3;
+  transition:border-color .25s var(--ease),transform .25s var(--ease);
+}
+.drib:hover{border-color:var(--accent);transform:translateY(-3px)}
+.drib img{width:100%;height:100%;object-fit:cover;display:block}
+/* full-page screenshots read better anchored to their top edge */
+.drib--own img{object-position:top center}
+.drib__cap{
+  position:absolute;inset:auto 0 0 0;padding:1.6rem .8rem .6rem;
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.05em;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.78));
+  opacity:0;transition:opacity .25s var(--ease);
+}
+.drib:hover .drib__cap,.drib:focus-visible .drib__cap{opacity:1}
+.dribs__more{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;text-decoration:none;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+}
+.dribs__more:hover{text-decoration:underline}
+.dribs__more svg{width:.9rem;height:.9rem}
+
+/* ---------- skills ---------- */
+.skills{display:grid;gap:1.6rem}
+.skillrow{
+  display:grid;grid-template-columns:10rem 1fr;gap:1.4rem;align-items:start;
+  padding-bottom:1.6rem;border-bottom:1px solid var(--line);
+}
+.skillrow:last-child{border-bottom:0;padding-bottom:0}
+.skillrow h3{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);font-weight:500;padding-top:.3rem;
+}
+@media (max-width:700px){.skillrow{grid-template-columns:1fr;gap:.7rem}}
+
+/* ---------- process ---------- */
+.steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:.9rem;overflow:hidden;
+}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{background:var(--surface);padding:clamp(1.2rem,2.8vw,1.7rem)}
+.step b{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--accent);margin-bottom:.7rem;font-weight:500}
+.step h3{font-size:1rem;font-weight:650;margin:0 0 .4rem}
+.step p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.55}
+
+/* ---------- teaching / education ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.8rem,4vw,3.5rem)}
+.duo>div>h3{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 1.3rem;font-weight:500;
+}
+.stack{list-style:none;margin:0;padding:0;display:grid;gap:1.3rem}
+.stack li{padding-left:1rem;border-left:2px solid var(--line);transition:border-color .2s var(--ease)}
+.stack li:hover{border-left-color:var(--accent)}
+.stack h4{font-size:.97rem;font-weight:650;margin:0 0 .3rem}
+.stack .where{font-size:.86rem;color:var(--accent);display:block}
+.stack .when{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);display:block;margin-top:.2rem}
+.stack p{margin:.45rem 0 0;font-size:.85rem;color:var(--muted)}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--line);background:var(--surface)}
+.foot__cta{max-width:44rem;display:grid;gap:1.1rem}
+.foot__cta h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:700;letter-spacing:-.04em}
+.foot__cta h2 em{font-style:normal;color:var(--accent)}
+.foot__bar{
+  margin-top:clamp(2.5rem,6vw,4rem);padding-top:1.3rem;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);
+}
+.foot__bar .sp{margin-left:auto;display:flex;align-items:center;gap:.45rem;color:var(--accent)}
+.foot__bar .sp i{width:.4rem;height:.4rem;border-radius:50%;background:currentColor}
+@media (max-width:620px){.foot__bar .sp{margin-left:0}}
+</style>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav" aria-label="Sections">
+  <div class="wrap nav__in">
+    <a class="mark" href="#top">
+      <span class="mark__glyph" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2">
+          <rect x="4" y="4" width="16" height="16" rx="2"/>
+          <circle cx="23" cy="23" r="5" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <b>Medisa Karimi</b><span>/ Full Stack</span>
+    </a>
+    <ul class="navlinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#shots">Shots</a></li>
+      <li><a href="#toolkit">Toolkit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="themebtn" id="themeBtn" type="button" aria-label="Toggle colour theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero" id="top">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__frames" aria-hidden="true">
+    <div class="frm frm--a"><i></i><b>Dashboard / Overview</b></div>
+    <div class="frm frm--b"><i></i><b>Mobile / Orders</b></div>
+    <div class="frm frm--c"><i></i><b>Card</b></div>
+  </div>
+  <div class="wrap hero__in">
+    <p class="eyebrow">Tehran, Iran &#183; open to work</p>
+    <h1><span class="ln"><span>Medisa</span></span><span class="ln"><span>Karimi</span></span></h1>
+    <p class="hero__role">
+      <span class="dot" aria-hidden="true"></span><strong>Full Stack Developer</strong>
+      <em>&#183;</em><em>React &#183; Next.js &#183; Laravel &#183; Django &#183; Go</em>
+    </p>
+    <p class="lede">
+      Six years shipping products end to end &#8212; React and Next.js on the front,
+      Laravel, Django and Go behind them. I like being the person who
+      <strong>owns a feature from schema to screen</strong>, and I have spent most of
+      that time in Persian&#8209;first products where RTL is a requirement, not a setting.
+    </p>
+    <div class="actions">
+      <a class="btn btn--solid" href="mailto:Medisa.karimi@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        Get in touch
+      </a>
+      <a class="btn" href="#work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+        See the work
+      </a> 
+    </div>
+  </div>
+</header>
+
+<!-- ============================ LEDGER ============================ -->
+<section class="ledger" aria-label="At a glance">
+  <div class="ledger__i"><span class="ledger__n" data-count="6">0</span><span class="ledger__l">Years building</span></div>
+  <div class="ledger__i"><span class="ledger__n" data-count="6">0</span><span class="ledger__l">Companies</span></div>
+  <div class="ledger__i"><span class="ledger__n" data-count="14">0</span><span class="ledger__l">Products shipped</span></div>
+  <div class="ledger__i"><span class="ledger__n" data-count="4">0</span><span class="ledger__l">Languages shipped</span></div>
+</section>
+
+<main>
+<!-- ============================ PROFILE ============================ -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>Profile</h2><span class="sec__rule"></span><span class="sec__tag">Summary</span></div>
+    <div class="about">
+      <div class="rv">
+        <p class="big">
+          I build the parts of a product that carry the load &#8212; the API under an admin
+          panel, the queue that has to drain before morning, and the interface sitting on
+          top of both.
+        </p>
+        <p>
+          Most of my work has been Persian&#8209;first, which means RTL is not an afterthought
+          in anything I ship: mirrored layouts, Persian numerals, Jalali dates, and collation
+          that behaves in Postgres and MySQL. I have built the same discipline into
+          LTR products for English&#8209;speaking teams.
+        </p>
+        <p>
+          On the front end I work in React and Next.js with TypeScript. On the back I reach
+          for Laravel or Django depending on what the team already runs, and drop to Go when
+          something has to be fast or hold a lot of connections at once &#8212; bulk SMS dispatch,
+          GPS ingestion, WebSocket rooms. I care more about the seams between those pieces
+          than about any one of them.
+        </p>
+      </div>
+      <div class="card rv">
+        <h3>Record</h3>
+        <!-- TODO: replace the contact details below with the real ones -->
+        <ul class="deets">
+          <li><span>Role</span> Full Stack Developer</li>
+          <li><span>Base</span> Tehran, Iran</li>
+          <li><span>Email</span> <a href="mailto:medisakarimi06@gmail.com">medisakarimi06@gmail.com</a></li>
+          <li><span>Phone</span> <a href="tel:+989223645360">+98 922 364 5360</a></li>
+          <li><span>In</span> <a href="#" target="_blank" rel="noopener noreferrer">linkedin.com/in/Medisak</a></li>
+          <li><span>Langs</span> Persian (native) &#183; English</li>
+          <li><span>Focus</span> React &#183; Next.js &#183; Laravel &#183; Django &#183; Go</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SELECTED WORK ============================ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>Selected Work</h2><span class="sec__rule"></span><span class="sec__tag">Seven pieces</span></div>
+    <div class="shots">
+
+      <article class="shot rv">
+        <div class="shot__vis">
+        <div class="shot__media">
+          <!-- Drop assets/work/dara-ai.png next to this file and the mock below is replaced automatically -->
+          <img src="assets/work/dara-ai.web.jpg" alt="Dara AI commerce assistant dashboard" loading="lazy" onerror="this.remove()">
+          <div class="mock mock--rtl mock--indigo" aria-hidden="true">
+            <div class="mock__side"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="mock__main">
+              <div class="mock__bar"><s></s><u></u></div>
+              <div class="mock__tiles"><b></b><b></b><b></b><b></b></div>
+              <div class="mock__cols">
+                <div class="mock__rows"><q></q><q></q><q></q><q></q><q></q></div>
+                <div class="mock__chart"><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="shotgal">
+            <a href="assets/work/dara-orders.png" target="_blank" rel="noopener noreferrer" data-label="Orders">
+              <img src="assets/work/dara-orders.thumb.jpg" alt="Orders" loading="lazy">
+            </a>
+            <a href="assets/work/dara-products.png" target="_blank" rel="noopener noreferrer" data-label="Products">
+              <img src="assets/work/dara-products.thumb.jpg" alt="Products" loading="lazy">
+            </a>
+            <a href="assets/work/dara-customers.png" target="_blank" rel="noopener noreferrer" data-label="Customers">
+              <img src="assets/work/dara-customers.thumb.jpg" alt="Customers" loading="lazy">
+            </a>
+            <a href="assets/work/dara-knowledge.png" target="_blank" rel="noopener noreferrer" data-label="Knowledge base">
+              <img src="assets/work/dara-knowledge.thumb.jpg" alt="Knowledge base" loading="lazy">
+            </a>
+          </div>
+        </div>
+        <div class="shot__body">
+          <span class="shot__no">01 &#8212; Product engineering</span>
+          <h3>Dara AI</h3>
+          <p>
+            An AI sales assistant for Iranian online shops: one console over the message inbox, orders, products, customers and the knowledge base the model answers from. Django services behind a React admin, with every AI reply carrying a confidence score and a hand&#8209;off path to a human.
+          </p>
+          <ul class="tags tags--key"><li>React</li><li>Django</li><li>RTL admin</li><li>Data tables</li></ul>
+          <a class="shot__full" href="assets/work/dara-ai.png" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>View full screen</a>
+        </div>
+      </article>
+
+      <article class="shot rv">
+        <div class="shot__vis">
+        <div class="shot__media">
+          <img src="assets/work/testifyai-dashboard.web.jpg" alt="TestifyAI QA platform dashboard" loading="lazy" onerror="this.remove()">
+          <div class="mock" aria-hidden="true">
+            <div class="mock__side"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="mock__main">
+              <div class="mock__bar"><u></u><s></s></div>
+              <div class="mock__tiles"><b></b><b></b><b></b><b></b></div>
+              <div class="mock__cols">
+                <div class="mock__chart"><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
+                <div class="mock__rows"><q></q><q></q><q></q><q></q><q></q></div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="shotgal">
+            <a href="assets/work/testifyai-signin.png" target="_blank" rel="noopener noreferrer" data-label="Sign in">
+              <img src="assets/work/testifyai-signin.thumb.jpg" alt="Sign in" loading="lazy">
+            </a>
+          </div>
+        </div>
+        <div class="shot__body">
+          <span class="shot__no">02 &#8212; Product engineering</span>
+          <h3>TestifyAI Console</h3>
+          <span class="shot__co"><i></i>TestifyAI</span>
+          <p>
+            A QA platform that records one user flow and generates every kind of test from it. Next.js console over Go workers that run the suites; the screen had to make eight testing disciplines legible without turning into a wall of numbers.
+          </p>
+          <ul class="tags tags--key"><li>Next.js</li><li>Go</li><li>Dashboards</li><li>Dark mode</li></ul>
+          <a class="shot__full" href="assets/work/testifyai-dashboard.png" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>View full screen</a>
+        </div>
+      </article>
+
+      <article class="shot rv">
+        <div class="shot__vis">
+        <div class="shot__media">
+          <img src="assets/work/testifyai-landing.web.jpg" alt="TestifyAI marketing landing page" loading="lazy" onerror="this.remove()">
+          <div class="mock mock--land" aria-hidden="true">
+            <div class="mock__hero"><u></u><s></s><b></b><em></em></div>
+            <div class="mock__cards"><b></b><b></b><b></b></div>
+          </div>
+        </div>
+        </div>
+        <div class="shot__body">
+          <span class="shot__no">03 &#8212; Frontend</span>
+          <h3>TestifyAI Landing &amp; Identity</h3>
+          <span class="shot__co"><i></i>TestifyAI</span>
+          <p>
+            The public face of the same product, built in Next.js and sharing its component library with the app so the marketing site and the product never drift apart. Static generation, image optimisation and a pricing table wired to real plans.
+          </p>
+          <ul class="tags"><li>Next.js</li><li>SSG</li><li>Tailwind</li><li>Performance</li></ul>
+          <a class="shot__full" href="assets/work/testifyai-landing.png" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>View full screen</a>
+        </div>
+      </article>
+
+      <article class="shot rv">
+        <div class="shot__vis">
+        <div class="shot__media">
+          <img src="assets/work/khanehyar.web.jpg" alt="Khanehyar real estate platform landing page" loading="lazy" onerror="this.remove()">
+          <div class="mock mock--land mock--blue" aria-hidden="true">
+            <div class="mock__hero"><u></u><s></s><b></b><em></em></div>
+            <div class="mock__cards"><b></b><b></b><b></b></div>
+          </div>
+        </div>
+        </div>
+        <div class="shot__body">
+          <span class="shot__no">04 &#8212; Frontend &amp; API</span>
+          <h3>Khaneh&#8209;Yar </h3>
+          <p>
+            The Persian edition of HomeXa, the platform for real&#8209;estate agents &#8212; listings, comparative market analysis, personal sites and MLS sync. Rebuilt right&#8209;to&#8209;left end to end: mirrored layouts, Persian numerals, Jalali dates and Toman pricing, with a Laravel API underneath.
+          </p>
+          <ul class="tags"><li>Next.js</li><li>Laravel</li><li>RTL</li><li>Jalali dates</li></ul>
+          <a class="shot__full" href="assets/work/khanehyar.png" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>View full screen</a>
+        </div>
+      </article>
+
+      <article class="shot rv">
+        <div class="shot__vis">
+        <div class="shot__media">
+          <img src="assets/work/cloudlinenpro.png" alt="Cloud Linen Pro live operations dashboard" loading="lazy" onerror="this.remove()">
+          <div class="clp" aria-hidden="true">
+            <div class="clp__chrome">
+              <i></i><i></i><i></i>
+              <span>Cloud Linen Pro &#8212; Hyatt Regency Seattle &#183; Live Dashboard</span>
+            </div>
+            <div class="clp__body">
+              <div class="clp__side">
+                <div class="clp__logo">CLP</div>
+                <div class="clp__nav">
+                  <a class="on"><i></i>Dashboard</a>
+                  <a><i></i>Inventory</a>
+                  <a><i></i>Occupancy</a>
+                  <a><i></i>Deliveries</a>
+                  <a><i></i>LinenAI</a>
+                  <a><i></i>Staff</a>
+                </div>
+                <div class="clp__prop">
+                  <b>Hyatt Regency SEA</b>
+                  <span>364 rooms &#183; 87% occ tonight</span>
+                </div>
+              </div>
+              <div class="clp__main">
+                <div class="clp__head">
+                  <div>
+                    <h4>Good morning, Sarah</h4>
+                    <p>Wednesday, March 25, 2026</p>
+                  </div>
+                  <span class="clp__alert">&#9888; 2 items need attention</span>
+                </div>
+                <div class="clp__stats">
+                  <div class="clp__stat"><span>On-shelf balance</span><b class="teal">94%</b><em class="up">&#8593; 6pts vs last week</em></div>
+                  <div class="clp__stat"><span>In laundry</span><b>1,284</b><em>pieces tracked</em></div>
+                  <div class="clp__stat"><span>Next delivery</span><b class="gold">Tue</b><em>652 pieces needed</em></div>
+                  <div class="clp__stat"><span>Critical alerts</span><b class="red">2</b><em class="red">Requires action</em></div>
+                </div>
+                <div class="clp__panels">
+                  <div class="clp__panel">
+                    <div class="clp__ph"><h5>Inventory Status</h5><span class="pill pill--red">2 Critical</span></div>
+                    <ul class="clp__inv">
+                      <li><span>King Fitted Sheet</span><u><s style="width:100%;background:#16A34A"></s></u><b class="ok">OK</b></li>
+                      <li><span>Bath Towel (Lg)</span><u><s style="width:46%;background:#DC2626"></s></u><b class="crit">Critical</b></li>
+                      <li><span>Queen Pillowcase</span><u><s style="width:100%;background:#16A34A"></s></u><b class="ok">OK</b></li>
+                      <li><span>Suite Duvet Cover</span><u><s style="width:76%;background:#D9A441"></s></u><b class="low">Low</b></li>
+                      <li><span>Hand Towel</span><u><s style="width:100%;background:#16A34A"></s></u><b class="ok">OK</b></li>
+                    </ul>
+                  </div>
+                  <div class="clp__panel">
+                    <div class="clp__ph"><h5>Weekly Par vs Occupancy</h5><span class="pill pill--green">On Track</span></div>
+                    <div class="clp__bars">
+                      <div><i style="height:46%"></i><span>M</span></div>
+                      <div><i style="height:41%"></i><span>T</span></div>
+                      <div><i style="height:54%"></i><span>W</span></div>
+                      <div><i style="height:45%"></i><span>T</span></div>
+                      <div><i class="gold" style="height:63%"></i><span>F</span></div>
+                      <div><i class="red" style="height:78%"></i><span>S</span></div>
+                      <div><i class="red" style="height:70%"></i><span>S</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="shot__body">
+          <span class="shot__no">05 &#8212; Operator tooling</span>
+          <h3>Cloud Linen Pro</h3>
+          <span class="shot__co"><i></i><a href="https://cloudlinenpro.com/" target="_blank" rel="noopener noreferrer">cloudlinenpro.com</a></span>
+          <p>
+            The morning screen for a hotel&#8217;s linen operation. A React console over Go services that ingest RFID events and reconcile stock in real time. The layout answers one question first &#8212; what needs me today &#8212; then lets par levels, laundry counts and the delivery clock fill in behind it.
+          </p>
+          <ul class="tags tags--key"><li>React</li><li>Go</li><li>Realtime</li><li>Hospitality</li></ul>
+        </div>
+      </article>
+
+      <article class="shot rv">
+        <div class="shot__vis">
+        <div class="shot__media">
+          <img src="assets/work/car-dashboard.web.jpg" alt="Luxury smart car dashboard interface" loading="lazy" onerror="this.remove()">
+          <div class="mock mock--gauge mock--gold" aria-hidden="true">
+            <div class="mock__stack"><q></q><q></q><q></q></div>
+            <div class="mock__g mock__g--big"></div>
+            <div class="mock__stack"><q></q><q></q><q></q></div>
+          </div>
+        </div>
+          <div class="shotgal">
+            <a href="assets/work/car-dashboard-dark.png" target="_blank" rel="noopener noreferrer" data-label="Dark theme">
+              <img src="assets/work/car-dashboard-dark.thumb.jpg" alt="Dark theme" loading="lazy">
+            </a>
+          </div>
+        </div>
+        <div class="shot__body">
+          <span class="shot__no">06 &#8212; Frontend concept</span>
+          <h3>Smart Car Dashboard</h3>
+          <span class="shot__co"><i></i>Concept study</span>
+          <p>
+            An in-car HMI concept in matched light and dark themes: speed and RPM gauges, live routing, trip statistics, climate and media. Built as a React front end against a mocked telemetry stream, with every value readable in under a second.
+          </p>
+          <ul class="tags"><li>React</li><li>Canvas</li><li>Realtime</li><li>Theming</li></ul>
+          <a class="shot__full" href="assets/work/car-dashboard.png" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>View full screen</a>
+        </div>
+      </article>
+
+      <article class="shot rv">
+        <div class="shot__vis">
+        <div class="shot__media">
+          <img src="assets/work/amoot-suite.png" alt="Amoot Soft product suite interfaces" loading="lazy" onerror="this.remove()">
+          <div class="mock mock--rtl" aria-hidden="true">
+            <div class="mock__side"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="mock__main">
+              <div class="mock__bar"><s></s><u></u></div>
+              <div class="mock__tiles"><b></b><b></b><b></b><b></b></div>
+              <div class="mock__cols">
+                <div class="mock__rows"><q></q><q></q><q></q><q></q><q></q></div>
+                <div class="mock__chart"><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="shot__body">
+          <span class="shot__no">07 &#8212; Platform work</span>
+          <h3>The Amoot Suite</h3>
+          <span class="shot__co"><i></i><a href="https://www.owj.io/" target="_blank" rel="noopener noreferrer">owj.io</a> &#183; <a href="https://www.amootsms.com/" target="_blank" rel="noopener noreferrer">amootsms.com</a> &#183; <a href="https://www.alavan.ai/" target="_blank" rel="noopener noreferrer">alavan.ai</a></span>
+          <p>
+            Four products &#8212; CRM Owj, Amoot SMS, Avanak and Alavan &#8212; that shared a customer base and nothing else. Laravel and Django services behind React admin panels, with Go workers dispatching bulk SMS and voice at high volume, migrated product by product.
+          </p>
+          <ul class="tags tags--key"><li>Laravel</li><li>Django</li><li>Go</li><li>React</li><li>Queues</li></ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EXPERIENCE ============================ -->
+<section class="sec" id="experience">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>Experience</h2><span class="sec__rule"></span><span class="sec__tag">2020 &#8594; now</span></div>
+    <ol class="tl rv">
+
+      <li class="job job--now">
+        <div class="job__when"><b>2026 &#8212; Present</b><i>Current</i></div>
+        <h3>Full Stack Developer</h3>
+        <p class="job__co"><a href="https://staging.homexa.ca/" target="_blank" rel="noopener noreferrer">HomeXa</a> <em>&#183; Remote &#183; Canada / Tehran</em> <span class="live">Current</span></p>
+        <ul class="job__meta"><li>Full&#8209;time</li><li class="mode">Remote</li><li class="intl">International</li></ul>
+        <ul class="bul">
+          <li>Next.js front end for HomeXa, an all&#8209;in&#8209;one platform for Canadian realtors</li>
+          <li>Laravel API behind it: listings, CMA report generation and MLS synchronisation</li>
+          <li>Multi&#8209;tenant white&#8209;label agent sites served from one codebase</li>
+          <li>Owns features end to end &#8212; schema, endpoints, UI and deploy</li>
+        </ul>
+        <ul class="tags tags--key"><li>Next.js</li><li>React</li><li>Laravel</li><li>PostgreSQL</li><li>Docker</li></ul>
+      </li>
+
+      <li class="job">
+        <div class="job__when"><b>2025 &#8212; 2026</b><i>1 yr</i></div>
+        <h3>Full Stack Developer</h3>
+        <p class="job__co"><a href="https://eseminar.tv/" target="_blank" rel="noopener noreferrer">ESEMINAR</a> <em>&#183; Remote</em></p>
+        <ul class="job__meta"><li>Full&#8209;time</li><li class="mode">Remote</li></ul>
+        <ul class="bul">
+          <li>React client for live webinar rooms, tuned for low&#8209;bandwidth connections</li>
+          <li>Django services for scheduling, ticketing and access control</li>
+          <li>WebSocket layer carrying chat, Q&amp;A and polls for concurrent rooms</li>
+        </ul>
+        <ul class="tags"><li>React</li><li>Django</li><li>WebSockets</li><li>Redis</li></ul>
+      </li>
+
+      <li class="job">
+        <div class="job__when"><b>2024 &#8212; 2025</b><i>1 yr</i></div>
+        <h3>Full Stack Developer</h3>
+        <p class="job__co"><a href="https://cloudlinenpro.com/" target="_blank" rel="noopener noreferrer">Cloud Linen Pro</a> <em>&#183; Colorado, United States</em></p>
+        <ul class="job__meta"><li>Full&#8209;time</li><li class="mode">Remote</li><li class="intl">International</li></ul>
+        <ul class="bul">
+          <li>React operator console for hotel linen operations &#8212; inventory, routes, par levels</li>
+          <li>Go services ingesting RFID events and reconciling stock in real time</li>
+          <li>Worked async with a US product team across a nine&#8209;and&#8209;a&#8209;half hour difference</li>
+        </ul>
+        <ul class="tags"><li>React</li><li>Go</li><li>PostgreSQL</li><li>Async</li></ul>
+      </li>
+
+      <li class="job">
+        <div class="job__when"><b>2022 &#8212; 2024</b><i>2 yrs</i></div>
+        <h3>Full Stack Developer</h3>
+        <p class="job__co">Amoot Soft <em>&#183; Mashhad, Iran</em></p>
+        <ul class="job__meta"><li>Full&#8209;time</li><li class="mode">On&#8209;site</li></ul>
+        <ul class="bul">
+          <li>Laravel and Django services across CRM Owj, Amoot SMS, Avanak and Alavan</li>
+          <li>React admin panels and dashboards, all right&#8209;to&#8209;left</li>
+          <li>Go workers dispatching bulk SMS and voice campaigns at high volume</li>
+          <li>Alavan AI endpoints: OCR, text&#8209;to&#8209;speech, speech recognition, phishing detection</li>
+        </ul>
+        <ul class="tags tags--key"><li>Laravel</li><li>Django</li><li>Go</li><li>React</li><li>MySQL</li></ul>
+      </li>
+
+      <li class="job">
+        <div class="job__when"><b>2021 &#8212; 2022</b><i>1 yr</i></div>
+        <h3>Backend Developer</h3>
+        <p class="job__co">Nak Company <em>&#183; Tehran, Iran</em></p>
+        <ul class="job__meta"><li>Full&#8209;time</li><li class="mode">On&#8209;site</li></ul>
+        <ul class="bul">
+          <li>Django REST API for Tiana Inventory, including barcode scanning and stock sync</li>
+          <li>Go service ingesting GPS telemetry for Tiana Tracking, with live routing and alerts</li>
+          <li>First shared API conventions and deployment scripts at the company</li>
+        </ul>
+        <ul class="tags"><li>Django</li><li>Go</li><li>REST API</li><li>MySQL</li></ul>
+      </li>
+
+      <li class="job">
+        <div class="job__when"><b>2020 &#8212; 2021</b><i>1 yr</i></div>
+        <h3>Junior Developer</h3>
+        <p class="job__co">NcodeStudio <em>&#183; Shahrud, Iran</em></p>
+        <ul class="job__meta"><li>Full&#8209;time</li><li class="mode">On&#8209;site</li></ul>
+        <ul class="bul">
+          <li>Ariana &#8212; streaming backend and mobile client, including recommendation endpoints</li>
+          <li>Taakh &#8212; education app REST API for flashcards, video lessons and mock exams</li>
+          <li>Where I learned to read a codebase before adding to it</li>
+        </ul>
+        <ul class="tags"><li>REST API</li><li>Mobile</li><li>Backend</li></ul>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ LIVE PRODUCTS ============================ -->
+<section class="sec" id="products">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>Live Products</h2><span class="sec__rule"></span><span class="sec__tag">Shipped &amp; in production</span></div>
+    <div class="sites rv">
+
+      <a class="site" href="https://staging.homexa.ca/" target="_blank" rel="noopener noreferrer" style="--s-a:#123A73;--s-b:#2E90FA">
+        <div class="site__shot">
+          <span class="site__mono" aria-hidden="true">Hx</span>
+          <img src="https://cdn.housinate.ca/emails/open_graph_image.png" alt="HomeXa" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+        </div>
+        <div class="site__body">
+          <div class="site__top">
+            <h3>HomeXa</h3>
+            <svg class="site__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <span class="site__host">staging.homexa.ca</span>
+          <p>All&#8209;in&#8209;one platform for Canadian realtors &#8212; CRM, CMA reports, listings, social media and white&#8209;label agent websites, on one subscription.</p>
+          <span class="site__role">Next.js &#183; Laravel &#183; PostgreSQL</span>
+        </div>
+      </a>
+
+      <a class="site" href="https://www.alavan.ai/" target="_blank" rel="noopener noreferrer" style="--s-a:#B4231F;--s-b:#DC2626">
+        <div class="site__shot">
+          <span class="site__mono" aria-hidden="true">Al</span>
+          <img src="https://www.alavan.ai/wp-content/uploads/2025/07/opg-alavan.jpg" alt="Alavan" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+        </div>
+        <div class="site__body">
+          <div class="site__top">
+            <h3>Alavan</h3>
+            <svg class="site__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <span class="site__host">alavan.ai</span>
+          <p>A Persian marketplace for AI models and APIs &#8212; free test console, full Farsi documentation, and a builder that stands up a Persian chatbot in minutes.</p>
+          <span class="site__role">Django &#183; Go &#183; REST APIs</span>
+        </div>
+      </a>
+
+      <a class="site" href="https://www.owj.io/" target="_blank" rel="noopener noreferrer" style="--s-a:#12324F;--s-b:#2C6E9B">
+        <div class="site__shot">
+          <span class="site__mono" aria-hidden="true">Owj</span>
+          <img src="https://www.owj.io/wp-content/uploads/2025/10/photo_2025-07-13_08-57-13.jpg" alt="Owj CRM" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+        </div>
+        <div class="site__body">
+          <div class="site__top">
+            <h3>Owj CRM</h3>
+            <svg class="site__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <span class="site__host">owj.io</span>
+          <p>Cloud CRM for Iranian businesses &#8212; pipeline, process automation and reporting built to grow sales and keep customers, with a free demo path.</p>
+          <span class="site__role">Laravel &#183; React &#183; MySQL</span>
+        </div>
+      </a>
+
+      <a class="site" href="https://www.amootsms.com/" target="_blank" rel="noopener noreferrer" style="--s-a:#0E5C4A;--s-b:#16A37B">
+        <div class="site__shot">
+          <span class="site__mono" aria-hidden="true">SMS</span>
+          <img src="https://www.amootsms.com/wp-content/uploads/2025/07/opg-payamak.jpg" alt="Amoot SMS" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+        </div>
+        <div class="site__body">
+          <div class="site__top">
+            <h3>Amoot SMS</h3>
+            <svg class="site__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <span class="site__host">amootsms.com</span>
+          <p>One of Iran&#8217;s most complete bulk&#8209;SMS panels &#8212; campaign composer, contact lists, delivery reporting and tiered pricing for business messaging.</p>
+          <span class="site__role">Laravel &#183; Go workers &#183; Queues</span>
+        </div>
+      </a>
+
+      <a class="site" href="https://cloudlinenpro.com/" target="_blank" rel="noopener noreferrer" style="--s-a:#1F3A34;--s-b:#4F8C7B">
+        <div class="site__shot">
+          <span class="site__mono" aria-hidden="true">CLP</span>
+          <img src="assets/work/cloudlinenpro.png" alt="Cloud Linen Pro" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="site__body">
+          <div class="site__top">
+            <h3>Cloud Linen Pro</h3>
+            <svg class="site__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <span class="site__host">cloudlinenpro.com</span>
+          <p>Linen automation for hotels &#8212; software, RFID and robotics on one platform, replacing the clipboards that run most back&#8209;of&#8209;house operations.</p>
+          <span class="site__role">React &#183; Go &#183; Realtime</span>
+        </div>
+      </a>
+
+      <a class="site" href="https://eseminar.tv/" target="_blank" rel="noopener noreferrer" style="--s-a:#2B1B63;--s-b:#6D5AE6">
+        <div class="site__shot">
+          <span class="site__mono" aria-hidden="true">es</span>
+          <img src="https://www.eseminar.tv/_nuxt/img/logo-hq.5790c61.png" alt="ESEMINAR" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+        </div>
+        <div class="site__body">
+          <div class="site__top">
+            <h3>ESEMINAR</h3>
+            <svg class="site__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <span class="site__host">eseminar.tv</span>
+          <p>Iran&#8217;s largest platform for running, selling and attending webinars, online classes and live events.</p>
+          <span class="site__role">React &#183; Django &#183; WebSockets</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ OTHER PRODUCTS ============================ -->
+<section class="sec" id="more">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>Also shipped</h2><span class="sec__rule"></span><span class="sec__tag">Internal &amp; earlier work</span></div>
+    <div class="grid rv">
+
+      <article class="proj">
+        <div class="proj__top"><h3>Dara AI</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">Amoot Soft &#183; Alavan</span>
+        <p>AI sales assistant for online shops &#8212; inbox, orders, CRM and a managed knowledge base.</p>
+      </article>
+
+      <article class="proj">
+        <div class="proj__top"><h3>Khaneh&#8209;Yar</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">HomeXa</span>
+        <p>The Persian, right&#8209;to&#8209;left edition of the HomeXa platform, rebuilt around Iranian MLS data and Toman pricing.</p>
+      </article>
+
+      <article class="proj">
+        <div class="proj__top"><h3>TestifyAI</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">HomeXa</span>
+        <p>AI testing platform: one recording generates manual, automation, API and performance tests.</p>
+      </article>
+
+      <article class="proj">
+        <div class="proj__top"><h3>Avanak</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">Amoot Soft</span>
+        <p>Voice message platform built for massive simultaneous call delivery.</p>
+      </article>
+
+      <article class="proj">
+        <div class="proj__top"><h3>Tiana Inventory</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">Nak Company</span>
+        <p>Real&#8209;time inventory management with barcode scanning support &#8212; brand mark included.</p>
+      </article>
+
+      <article class="proj">
+        <div class="proj__top"><h3>Tiana Tracking</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">Nak Company</span>
+        <p>GPS&#8209;based fleet tracking with real&#8209;time routing and alerts.</p>
+      </article>
+
+      <article class="proj">
+        <div class="proj__top"><h3>Ariana</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">NcodeStudio</span>
+        <p>Mobile streaming app with a content recommendation system.</p>
+      </article>
+
+      <article class="proj">
+        <div class="proj__top"><h3>Taakh</h3>
+          <svg class="proj__chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <span class="proj__co">NcodeStudio</span>
+        <p>Education app with flashcards, video lessons and mock exams.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================ TOOLKIT ============================ -->
+<section class="sec" id="toolkit">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>Stack</h2><span class="sec__rule"></span><span class="sec__tag">What I build with</span></div>
+    <div class="skills">
+      <div class="skillrow rv">
+        <h3>Frontend</h3>
+        <ul class="tags tags--key">
+          <li>React</li><li>Next.js</li><li>TypeScript</li><li>JavaScript</li>
+          <li>Tailwind CSS</li><li>Redux</li><li>React Query</li><li>HTML / CSS</li>
+        </ul>
+      </div>
+      <div class="skillrow rv">
+        <h3>Backend</h3>
+        <ul class="tags tags--key">
+          <li>Laravel</li><li>Django</li><li>Go</li><li>PHP</li><li>Python</li>
+          <li>REST APIs</li><li>GraphQL</li><li>Celery</li><li>WebSockets</li>
+        </ul>
+      </div>
+      <div class="skillrow rv">
+        <h3>Data</h3>
+        <ul class="tags">
+          <li>PostgreSQL</li><li>MySQL</li><li>Redis</li><li>MongoDB</li>
+          <li>Elasticsearch</li><li>Migrations</li><li>Query tuning</li>
+        </ul>
+      </div>
+      <div class="skillrow rv">
+        <h3>Infrastructure</h3>
+        <ul class="tags">
+          <li>Docker</li><li>Nginx</li><li>Linux</li><li>CI / CD</li>
+          <li>GitHub Actions</li><li>Azure</li><li>Git</li>
+        </ul>
+      </div>
+      <div class="skillrow rv">
+        <h3>Testing</h3>
+        <ul class="tags">
+          <li>Pytest</li><li>Jest</li><li>PHPUnit</li><li>Playwright</li><li>Postman</li>
+        </ul>
+      </div>
+      <div class="skillrow rv">
+        <h3>Specialities</h3>
+        <ul class="tags">
+          <li>RTL / bidi</li><li>Jalali dates</li><li>Multi&#8209;tenancy</li>
+          <li>Queues &amp; workers</li><li>Realtime</li><li>Third&#8209;party integrations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESS ============================ -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>How I work</h2><span class="sec__rule"></span><span class="sec__tag">Four habits</span></div>
+    <div class="steps rv">
+      <div class="step">
+        <b>01</b>
+        <h3>Model the data first</h3>
+        <p>Schema before endpoints, endpoints before screens. Most confusing UI turns out to be a confused data model.</p>
+      </div>
+      <div class="step">
+        <b>02</b>
+        <h3>Thin, boring slices</h3>
+        <p>Ship the smallest path that works end to end, then widen it. A feature nobody can deploy is not a feature.</p>
+      </div>
+      <div class="step">
+        <b>03</b>
+        <h3>Pick the dull tool</h3>
+        <p>Laravel or Django unless there is a reason not to; Go when something has to be fast or hold many connections.</p>
+      </div>
+      <div class="step">
+        <b>04</b>
+        <h3>Leave it runnable</h3>
+        <p>Tests on the parts that break, a README that works on a clean machine, and logs that say what went wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EDUCATION ============================ -->
+<section class="sec" id="education">
+  <div class="wrap">
+    <div class="sec__head rv"><h2>Education</h2><span class="sec__rule"></span><span class="sec__tag">Background</span></div>
+    <div class="duo">
+      <div class="rv">
+        <h3>Studied</h3>
+        <ul class="stack">
+          <li>
+            <h4>B.Sc. Computer Engineering</h4>
+            <span class="where">Shahrood University of Technology</span><span class="when">2016 &#8212; 2020</span>
+          </li>
+          <li>
+            <h4>Diploma in Mathematics</h4>
+            <span class="where">Sampad &#8212; NODET</span><span class="when">2012 &#8212; 2016</span>
+            <p>National Organization for Development of Exceptional Talents.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>Also</h3>
+        <ul class="stack">
+          <li>
+            <h4>Teaching Assistant</h4>
+            <span class="where">Shahrood University of Technology</span><span class="when">2018 &#8212; 2020</span>
+            <p>C/C++, Data Structures and Databases.</p>
+          </li>
+          <li>
+            <h4>Languages</h4>
+            <span class="where">Persian &#8212; native &#183; English &#8212; professional</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="sec foot" id="contact">
+  <div class="wrap">
+    <div class="foot__cta rv">
+      <p class="eyebrow">Contact</p>
+      <h2>Got something that <em>needs building?</em></h2>
+      <p class="lede">
+        I&#8217;m open to full stack and backend roles, and to contract work on React,
+        Next.js, Laravel, Django or Go codebases. Email is the fastest way to reach me.
+      </p>
+      <div class="actions">
+        <a class="btn btn--solid" href="mailto:medisakarimi06@gmail.com">medisakarimi06@gmail.com</a>
+        <a class="btn" href="tel:+989223645360">+98 922 364 5360</a>
+        <a class="btn" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot__bar">
+      <span>&#169; 2026 Medisa Karimi</span>
+      <span>Tehran, Iran</span>
+      <span class="sp"><i></i>Available for work</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- theme toggle ---- */
+  var root=document.documentElement,btn=document.getElementById("themeBtn");
+  var saved=null;
+  try{saved=localStorage.getItem("mk-theme")}catch(e){}
+  if(saved){root.setAttribute("data-theme",saved)}
+  btn.addEventListener("click",function(){
+    var dark=root.getAttribute("data-theme")==="dark"||
+      (!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme:dark)").matches);
+    var next=dark?"light":"dark";
+    root.setAttribute("data-theme",next);
+    try{localStorage.setItem("mk-theme",next)}catch(e){}
+  });
+
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  /* ---- reveal on scroll ---- */
+  var rv=document.querySelectorAll(".rv");
+  if(!("IntersectionObserver" in window)||reduce){
+    rv.forEach(function(el){el.classList.add("in")});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}
+      });
+    },{rootMargin:"0px 0px -12% 0px",threshold:.08});
+    rv.forEach(function(el){io.observe(el)});
+  }
+
+  /* ---- count-up ledger ---- */
+  var nums=document.querySelectorAll(".ledger__n");
+  function count(el){
+    var target=parseInt(el.getAttribute("data-count"),10)||0;
+    if(reduce){el.textContent=target;return}
+    var start=performance.now(),dur=1100;
+    (function tick(now){
+      var p=Math.min((now-start)/dur,1);
+      el.textContent=Math.round(target*(1-Math.pow(1-p,3)));
+      if(p<1)requestAnimationFrame(tick);
+    })(start);
+  }
+  if(!("IntersectionObserver" in window)){
+    nums.forEach(count);
+  }else{
+    var nio=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){count(en.target);nio.unobserve(en.target)}
+      });
+    },{threshold:.5});
+    nums.forEach(function(el){nio.observe(el)});
+  }
+})();
+</script>
+</body>
+</html>
